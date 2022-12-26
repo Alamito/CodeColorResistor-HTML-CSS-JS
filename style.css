@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.box-resistor {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.resistor {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+}
+
+.lineLeft {
+    position: absolute;
+    left: 313px;
+    height: 100.7%;
+}
+
+.lineMid {
+    position: absolute;
+    left: 360px;
+}
+
+.lineRight {
+    position: absolute;
+    left: 407px;
+}
+
+.lineTolerance {
+    position: absolute;
+    left: 498px;
+    height: 100.7%;
+}
