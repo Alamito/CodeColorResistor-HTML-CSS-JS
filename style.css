@@ -36,6 +36,10 @@
     color: white;
 }
 
+.ohms h1 {
+    letter-spacing: 7px;
+}
+
 .resistor {
     display: flex;
     position: absolute;
