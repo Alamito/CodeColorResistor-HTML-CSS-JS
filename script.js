@@ -6,6 +6,8 @@ const lineMid = document.querySelector('.lineMid');
 const lineRight = document.querySelector('.lineRight');
 const lineTolerance = document.querySelector('.lineTolerance');
 
+const valueOhms = document.querySelector('.ohms h1');
+
 let indexLineLeft = 1;
 let indexLineMid = 0;
 let indexLineRight = 2;
@@ -49,12 +51,28 @@ function mathOhms (lineLeft, lineMid, lineRight, indexLineTolerance, valueTolera
 
     const lineTolerance = valueTolerance[indexLineTolerance];
     
-    ohms = `${parseInt(ohms) * parseInt(multiply)} ± ${lineTolerance}%`;
+    ohms = notation(ohms, multiply, lineTolerance);
 
-    console.log(ohms);
+    valueOhms.innerHTML = ohms; 
 }
 
-// function checkTolerance(indexLineTolerance) {
-//     return valueTolerance[indexLineTolerance];
-// }
+function notation(ohms, multiply, lineTolerance) { 
+    ohms = `${parseInt(ohms) * parseInt(multiply)}`;
+    
+    if (ohms.length <= 4) {
+        ohms = ohms + ' Ω'
+    }
+    else if (ohms.length >= 5 && ohms.length <= 7) {
+        ohms = ohms.split('');
+        ohms.splice(2, 3);
+        ohms = ohms.join('');
+        ohms = ohms + ' KΩ'
+    } else {
+        ohms = ohms.split('');
+        ohms.splice(2, 6);
+        ohms = ohms.join('');
+        ohms = ohms + ' MΩ'
+    }
+    return `${ohms} ± ${lineTolerance}%`;
+}
 
