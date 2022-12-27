@@ -59,19 +59,36 @@ function mathOhms (lineLeft, lineMid, lineRight, indexLineTolerance, valueTolera
 function notation(ohms, multiply, lineTolerance) { 
     ohms = `${parseInt(ohms) * parseInt(multiply)}`;
     
-    if (ohms.length <= 4) {
+    if (ohms.length <= 3) {
         ohms = ohms + ' Ω'
     }
-    else if (ohms.length >= 5 && ohms.length <= 7) {
+    else if (ohms.length >= 4 && ohms.length <= 7) {
         ohms = ohms.split('');
-        ohms.splice(2, 3);
-        ohms = ohms.join('');
-        ohms = ohms + ' KΩ'
+        ohms.splice(2, 2);
+        ohms = ohms.join('') + ' KΩ';
+
+        const index = ohms.length - 4;
+        ohms = ohms.substr(0, index) + ',' + ohms.substr(index);
+
+        if (ohms[ohms.length - 4] === '0') {
+            ohms = ohms.split('');
+            ohms.splice(ohms.length - 5, 2);
+            ohms = ohms.join('');
+        }
+
     } else {
         ohms = ohms.split('');
         ohms.splice(2, 6);
-        ohms = ohms.join('');
-        ohms = ohms + ' MΩ'
+        ohms = ohms.join('') + ' MΩ';
+
+        const index = ohms.length - 4;
+        ohms = ohms.substr(0, index) + ',' + ohms.substr(index);
+
+        if (ohms[ohms.length - 4] === '0') {
+            ohms = ohms.split('');
+            ohms.splice(ohms.length - 5, 2);
+            ohms = ohms.join('');
+        }
     }
     return `${ohms} ± ${lineTolerance}%`;
 }
