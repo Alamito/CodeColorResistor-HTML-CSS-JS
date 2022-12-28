@@ -50,11 +50,11 @@ function mathOhms (lineLeft, lineMid, lineRight, indexLineTolerance, valueTolera
 
     if (lineRight === 8) {
         multiply = '0.1';
-        ohms = `${(parseFloat(ohms) * parseFloat(multiply)).toFixed(2)} ± ${lineTolerance}%`;
+        ohms = `${(parseFloat(ohms) * parseFloat(multiply)).toFixed(2)} Ω ± ${lineTolerance}%`;
         valueOhms.innerHTML = ohms; 
     } else if (lineRight === 9) {
         multiply = '0.01';
-        ohms = `${(parseFloat(ohms) * parseFloat(multiply)).toFixed(2)} ± ${lineTolerance}%`;
+        ohms = `${(parseFloat(ohms) * parseFloat(multiply)).toFixed(2)} Ω ± ${lineTolerance}%`;
         valueOhms.innerHTML = ohms; 
     } else {
         for (let i = 0; i < lineRight; i++) { 
