@@ -18,10 +18,22 @@ const valueTolerance = [1, 2, 0.5, 0.25, 0.10, 0.05, 5, 10];
 
 document.addEventListener('click', (click) => {
     if (click.target == lineLeft) {
-        indexLineLeft = addIndexLine(indexLineLeft, 9);
+
+        if (indexLineMid == 0) {
+            indexLineLeft = addIndexLine(indexLineLeft, 9, 1);
+        } else {
+            indexLineLeft = addIndexLine(indexLineLeft, 9);
+        }
+
         lineLeft.src = `img/colors/lineLeft/${lineColorsLeftMid[indexLineLeft]}.png`;
     } else if (click.target == lineMid) {
-        indexLineMid = addIndexLine(indexLineMid, 9);
+
+        if (indexLineLeft == 0) {
+            indexLineMid = addIndexLine(indexLineMid, 9, 1);
+        } else {
+            indexLineMid = addIndexLine(indexLineMid, 9);
+        }
+
         lineMid.src = `img/colors/lineMid/${lineColorsLeftMid[indexLineMid]}.png`;
     } else if (click.target == lineRight) { 
         indexLineRight = addIndexLine(indexLineRight, 9);
@@ -33,9 +45,12 @@ document.addEventListener('click', (click) => {
     mathOhms(indexLineLeft, indexLineMid, indexLineRight, indexLineTolerance, valueTolerance);
 });
 
-function addIndexLine(Indexline, maxIndex) {
+function addIndexLine(Indexline, maxIndex, flag = 0) {
     if (Indexline === maxIndex) {
         Indexline = 0;
+        if (flag === 1) {
+            return 1;
+        }
     } else {
         Indexline++;
     }
@@ -62,7 +77,6 @@ function mathOhms (lineLeft, lineMid, lineRight, indexLineTolerance, valueTolera
         }
         valueOhms.innerHTML = `${notation(ohms, multiply)} ± ${lineTolerance}%`; 
     }
-    
 }
 
 function notation(ohms, multiply) {
@@ -74,7 +88,7 @@ function notation(ohms, multiply) {
         }
         return `${temp} KΩ`
     } else if (multiply >= 100000) {
-        temp = `${parseInt(ohms) * parseFloat(multiply / 1000000)} MΩ`;
+        temp = `${parseInt(ohms) * parseFloat(multiply / 1000000)}`;
         if (temp.length > 3) {
             temp = truncNumber(temp);
         }
