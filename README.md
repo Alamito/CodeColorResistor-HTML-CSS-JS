@@ -1,4 +1,5 @@
 # 🎨 Code Color Resistor 🎨
+[![NPM](https://img.shields.io/github/license/Alamito/CodeColorResistor-HTML-CSS-JS)](https://github.com/Alamito/CodeColorResistor-HTML-CSS-JS/blob/main/LICENCE)
 
 # 📜 Sobre o projeto 📜
 
